@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technologies</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Technologies I Use</h1>
+            <p class="tagline">My toolbox for creating great web experiences!</p>
+        </div>
+    </header>
+
+    <section>
+        <table class="tech-table">
+            <tr>
+                <th>Technology</th>
+                <th>Logo</th>
+            </tr>
+            <tr class="tech-item" data-tech="HTML">
+                <td>HTML</td>
+                <td><img src="images/html-logo.png" alt="HTML Logo"></td>
+            </tr>
+            <tr class="tech-item" data-tech="CSS">
+                <td>CSS</td>
+                <td><img src="images/css-logo.png" alt="CSS Logo"></td>
+            </tr>
+            <tr class="tech-item" data-tech="Python">
+                <td>Python</td>
+                <td><img src="images/python-logo.png" alt="Python Logo"></td>
+            </tr>
+            <tr class="tech-item" data-tech="ArcGIS">
+                <td>ArcGIS</td>
+                <td><img src="images/arcgis-logo.png" alt="ArcGIS Logo"></td>
+            </tr>
+            <tr class="tech-item" data-tech="QGIS">
+                <td>QGIS</td>
+                <td><img src="images/qgis-logo.png" alt="QGIS Logo"></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="tech-details" class="tech-details">
+        <h2>Technology Details</h2>
+        <p id="tech-description">Hover over a technology to learn more about it!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Web Page | Made with passion and web tech</p>
+    </footer>
+
+    <script>
+        // Add event listeners for hover and click interactions
+        const techItems = document.querySelectorAll('.tech-item');
+        const techDescription = document.getElementById('tech-description');
+
+        const techInfo = {
+            'HTML': 'HTML (HyperText Markup Language) is the standard markup language for creating web pages and web applications.',
+            'CSS': 'CSS (Cascading Style Sheets) is a style sheet language used for describing the presentation of a document written in HTML or XML.',
+            'Python': 'Python is a high-level programming language known for its readability and versatility, commonly used in data science, web development, and GIS.',
+            'ArcGIS': 'ArcGIS is a comprehensive geographic information system (GIS) platform developed by Esri for working with maps and geographic data.',
+            'QGIS': 'QGIS is an open-source geographic information system that allows users to create, edit, visualize, analyze, and publish geospatial information.'
+        };
+
+        // On hover, display a dynamic message for each technology
+        techItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const tech = this.dataset.tech;
+                techDescription.textContent = `You are hovering over ${tech}.`;
+            });
+
+            item.addEventListener('mouseleave', function() {
+                techDescription.textContent = 'Hover over a technology to learn more about it!';
+            });
+
+            // On click, show more details about the selected technology
+            item.addEventListener('click', function() {
+                const tech = this.dataset.tech;
+                techDescription.textContent = techInfo[tech] || 'Technology details not available.';
+            });
+        });
+    </script>
+</body>
+</html>
